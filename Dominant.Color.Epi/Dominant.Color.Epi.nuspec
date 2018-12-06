@@ -5,7 +5,7 @@
     <version>1.0.0</version>
     <authors>Jari Haapatalo</authors>
     <owners>Jari Haapatalo</owners>
-    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
+    <projectUrl>https://github.com/CreunaFI/Dominant.Color.Epi</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Get the dominant color of an image</description>
     <copyright>Copyright 2018</copyright>
