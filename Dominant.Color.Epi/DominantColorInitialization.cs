@@ -1,4 +1,8 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Reflection;
 using ColorThiefDotNet;
 using EPiServer;
 using EPiServer.Core;
@@ -22,14 +26,30 @@ namespace Dominant.Color.Epi
         private void ContentEventsOnCreatingContent(object sender, ContentEventArgs contentEventArgs)
         {
             var image = contentEventArgs.Content as ImageData;
-            if (image?.Property["DominantColor"] != null)
+            if (image != null)
             {
-                using (var bitmap = new Bitmap(image.BinaryData.OpenRead()))
+                foreach (var property in GetColorProperties(image))
                 {
-                    var colorThief = new ColorThief();
-                    var dominantColor = colorThief.GetColor(bitmap);
-                    image.Property["DominantColor"].Value = dominantColor.Color.ToHexString();
+                    var attribute = property.GetCustomAttribute<DominantColorAttribute>();
+                    var colorHex = GetDominantColor(image, attribute.Quality, attribute.Ignorewhite);
+                    image.Property[property.Name].Value = colorHex;
                 }
+            }
+        }
+
+        private static IEnumerable<PropertyInfo> GetColorProperties(IContentData image)
+        {
+            return image.GetType().GetProperties()
+                .Where(prop => Attribute.IsDefined(prop, typeof(DominantColorAttribute)));
+        }
+
+        private static string GetDominantColor(IBinaryStorable image, int quality, bool ignoreWhite)
+        {
+            using (var bitmap = new Bitmap(image.BinaryData.OpenRead()))
+            {
+                var colorThief = new ColorThief();
+                var dominantColor = colorThief.GetColor(bitmap, quality, ignoreWhite);
+                return dominantColor.Color.ToHexString();
             }
         }
 
@@ -38,7 +58,6 @@ namespace Dominant.Color.Epi
             var contentEvents = ServiceLocator.Current.GetInstance<IContentEvents>();
             contentEvents.CreatingContent -= ContentEventsOnCreatingContent;
             contentEvents.PublishingContent -= ContentEventsOnCreatingContent;
-
         }
     }
 }
