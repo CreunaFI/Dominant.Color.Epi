@@ -2,11 +2,13 @@
 <package >
   <metadata>
     <id>Dominant.Color.Epi</id>
+    <title>Dominant.Color.Epi</title>
     <version>1.0.0</version>
     <authors>Jari Haapatalo</authors>
     <owners>Jari Haapatalo</owners>
     <projectUrl>https://github.com/CreunaFI/Dominant.Color.Epi</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/CreunaFI/Dominant.Color.Epi/blob/master/LICENSE</licenseUrl>
     <description>Get the dominant color of an image</description>
     <copyright>Copyright 2018</copyright>
     <tags>EPiServer</tags>
