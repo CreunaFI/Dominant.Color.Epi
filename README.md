@@ -13,5 +13,12 @@ public class ImageFile : ImageData
    
    [DominantColor(Quality = 15, Ignorewhite = false)]
    public virtual string BackgroundColor { get; set; }
+   
+   [DominantColor(Quality = 5, Ignorewhite = false)]
+   [UIHint("DominantColorPalette")]
+   public virtual string Color { get; set; }
+
+   [UIHint("DominantColorPalette")]
+   public virtual string AnotherColor { get; set; }
 }
 ```
