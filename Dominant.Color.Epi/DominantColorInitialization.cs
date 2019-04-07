@@ -30,9 +30,12 @@ namespace Dominant.Color.Epi
             {
                 foreach (var property in GetColorProperties(image))
                 {
-                    var attribute = property.GetCustomAttribute<DominantColorAttribute>();
-                    var colorHex = GetDominantColor(image, attribute.Quality, attribute.Ignorewhite);
-                    image.Property[property.Name].Value = colorHex;
+                    if (image.Property[property.Name].Value == null)
+                    {
+                        var attribute = property.GetCustomAttribute<DominantColorAttribute>();
+                        var colorHex = GetDominantColor(image, attribute.Quality, attribute.Ignorewhite);
+                        image.Property[property.Name].Value = colorHex.ToLower();
+                    }
                 }
             }
         }

@@ -49,6 +49,9 @@
     <Reference Include="EPiServer.Cms.AspNet, Version=11.11.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.CMS.AspNet.11.11.0\lib\net461\EPiServer.Cms.AspNet.dll</HintPath>
     </Reference>
+    <Reference Include="EPiServer.Cms.Shell.UI, Version=11.11.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.11.11.0\lib\net461\EPiServer.Cms.Shell.UI.dll</HintPath>
+    </Reference>
     <Reference Include="EPiServer.Configuration, Version=11.11.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.CMS.AspNet.11.11.0\lib\net461\EPiServer.Configuration.dll</HintPath>
     </Reference>
@@ -78,6 +81,15 @@
     </Reference>
     <Reference Include="EPiServer.LinkAnalyzer, Version=11.11.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.CMS.Core.11.11.0\lib\net461\EPiServer.LinkAnalyzer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPiServer.Shell, Version=11.11.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.11.11.0\lib\net461\EPiServer.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="EPiServer.Shell.UI, Version=11.11.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.11.11.0\lib\net461\EPiServer.Shell.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="EPiServer.UI, Version=11.11.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.11.11.0\lib\net461\EPiServer.UI.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.Web.WebControls, Version=11.11.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.CMS.AspNet.11.11.0\lib\net461\EPiServer.Web.WebControls.dll</HintPath>
@@ -151,11 +163,20 @@
   <ItemGroup>
     <Compile Include="DominantColorAttribute.cs" />
     <Compile Include="DominantColorInitialization.cs" />
+    <Compile Include="DominantColorPaletteEditorDescriptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Dominant.Color.Epi.nuspec" />
+    <None Include="app.config" />
+    <None Include="Dominant.Color.Epi.nuspec">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="module.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="ClientResources\ColorPalette.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
